@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Books</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="books_api_key">d627f1f39f134082a17fc44865d36219</string>
+    <string name="books_base_url">http://api.nytimes.com/svc/books/v3/lists/overview.json</string>
+
+    <string name="action_settings">Settings</string>
+</resources>
