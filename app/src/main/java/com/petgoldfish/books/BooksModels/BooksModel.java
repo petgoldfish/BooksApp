@@ -1,7 +1,6 @@
 package com.petgoldfish.books.BooksModels;
 
-public class BooksModel
-{
+public class BooksModel {
     private Results results;
 
     private String status;
@@ -10,49 +9,40 @@ public class BooksModel
 
     private String copyright;
 
-    public Results getResults ()
-    {
+    public Results getResults() {
         return results;
     }
 
-    public void setResults (Results results)
-    {
+    public void setResults(Results results) {
         this.results = results;
     }
 
-    public String getStatus ()
-    {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus (String status)
-    {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public String getNum_results ()
-    {
+    public String getNum_results() {
         return num_results;
     }
 
-    public void setNum_results (String num_results)
-    {
+    public void setNum_results(String num_results) {
         this.num_results = num_results;
     }
 
-    public String getCopyright ()
-    {
+    public String getCopyright() {
         return copyright;
     }
 
-    public void setCopyright (String copyright)
-    {
+    public void setCopyright(String copyright) {
         this.copyright = copyright;
     }
 
     @Override
-    public String toString()
-    {
-        return "ClassPojo [results = "+results+", status = "+status+", num_results = "+num_results+", copyright = "+copyright+"]";
+    public String toString() {
+        return "ClassPojo [results = " + results + ", status = " + status + ", num_results = " + num_results + ", copyright = " + copyright + "]";
     }
 }

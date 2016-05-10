@@ -11,8 +11,7 @@
             android:title="Top Stories" />
         <item
             android:id="@+id/nav_search"
-            android:title="Search"
-             />
+            android:title="Search" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"

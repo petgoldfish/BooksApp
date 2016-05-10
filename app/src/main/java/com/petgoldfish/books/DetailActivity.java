@@ -1,8 +1,8 @@
 package com.petgoldfish.books;
 
 import android.app.ProgressDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,12 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.petgoldfish.books.BooksModels.Books;
 import com.petgoldfish.books.BooksModels.BooksModel;
-import com.petgoldfish.books.BooksModels.Lists;
 import com.petgoldfish.books.ListsModels.EachList;
 import com.petgoldfish.books.ListsModels.Results;
-import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -70,10 +67,8 @@ public class DetailActivity extends AppCompatActivity {
         final TextView publishedDate = (TextView) findViewById(R.id.published_date);
 
 
-
         bestSellersDate.setText("Best Sellers Date - " + booksModel.getResults().getBestsellers_date());
         publishedDate.setText("Published Date - " + booksModel.getResults().getPublished_date());
-
 
 
     }
@@ -82,7 +77,7 @@ public class DetailActivity extends AppCompatActivity {
 
         Results bs[];
 
-        detailRVAdapter(){
+        detailRVAdapter() {
 
         }
 

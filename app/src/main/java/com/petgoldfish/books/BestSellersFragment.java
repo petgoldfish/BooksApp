@@ -4,15 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,9 +20,6 @@ import com.petgoldfish.books.BooksModels.BooksModel;
 import com.petgoldfish.books.BooksModels.Lists;
 import com.petgoldfish.books.BooksModels.Results;
 import com.squareup.picasso.Picasso;
-
-import java.io.Serializable;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -54,11 +48,13 @@ public class BestSellersFragment extends Fragment {
         final TextView bestSellersDate = (TextView) rootView.findViewById(R.id.best_sellers_date);
         final TextView publishedDate = (TextView) rootView.findViewById(R.id.published_date);
 
+        // Rest Adapter creation
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Utils.booksBaseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        // Performing the network call
         NyApi api = retrofit.create(NyApi.class);
         final Call<BooksModel> booksCall = api.getBooksOverview();
         booksCall.enqueue(new Callback<BooksModel>() {
@@ -93,6 +89,7 @@ public class BestSellersFragment extends Fragment {
         return rootView;
     }
 
+    // RecyclerView adapter for the main recyclerView
     public class mainRVAdapter extends RecyclerView.Adapter<mainRVAdapter.MyViewHolder> {
 
         Lists ls[];
@@ -112,6 +109,8 @@ public class BestSellersFragment extends Fragment {
         public void onBindViewHolder(final MyViewHolder holder, int position) {
             holder.test.setText(ls[position].getDisplay_name());
             holder.inRv.setAdapter(new inRVAdapter(ls[position].getBooks()));
+
+            // An OnClickListener to launch the details activity on clicking
             holder.linearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -148,10 +147,12 @@ public class BestSellersFragment extends Fragment {
 
     }
 
+    // RecyclerView adapter for the inner recyclerView
     public class inRVAdapter extends RecyclerView.Adapter<inRVAdapter.MyViewHolder> {
 
         Books bs[];
 
+        // Empty constructor to initialise the recyclerView
         inRVAdapter() {
 
         }
@@ -169,8 +170,8 @@ public class BestSellersFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
-            holder.test.setText(bs[position].getTitle());
-            Picasso.with(getContext()).load(bs[position].getBook_image()).into(holder.thumb);
+            holder.bookTitle.setText(bs[position].getTitle());
+            Picasso.with(getContext()).load(bs[position].getBook_image()).into(holder.thumbnail);
         }
 
         @Override
@@ -180,14 +181,14 @@ public class BestSellersFragment extends Fragment {
 
         class MyViewHolder extends RecyclerView.ViewHolder {
 
-            TextView test;
-            ImageView thumb;
+            TextView bookTitle;
+            ImageView thumbnail;
 
             MyViewHolder(View itemView) {
                 super(itemView);
 
-                test = (TextView) itemView.findViewById(R.id.book_title);
-                thumb = (ImageView) itemView.findViewById(R.id.thumb);
+                bookTitle = (TextView) itemView.findViewById(R.id.book_title);
+                thumbnail = (ImageView) itemView.findViewById(R.id.thumb);
 
             }
 
